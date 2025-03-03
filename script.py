@@ -33,6 +33,12 @@ class HashMap:
         return item[1]
     
     return None
+  
+  def get_all_items(self):
+        items = []
+        for bucket in self.array:
+            items.extend(bucket)
+        return items
 
 pokedex = HashMap(len(pokemon_jpnames))
 digidex = HashMap(len(digimon_jpnames))
@@ -58,3 +64,17 @@ print("Agumon's Japanese name is:", agumon_name)
 digidex.assign('WarGreymon', 'ウォーグレイモン')
 wargreymon_name = digidex.retrieve('WarGreymon')
 print("A new Digimon called WarGreymon has been added with the Japanese name:", wargreymon_name)
+
+# Print all items in the pokedex
+all_pokemon = pokedex.get_all_items()
+print("Full Pokemon Hashmap:")
+for pokemon in all_pokemon:
+    print(f"{pokemon[0]}: {pokemon[1]}")
+
+print("\n")
+
+# Print all items in the digidex
+all_digimon = digidex.get_all_items()
+print("Full Digimon Hashmap:")
+for digimon in all_digimon:
+    print(f"{digimon[0]}: {digimon[1]}")
